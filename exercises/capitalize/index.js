@@ -9,14 +9,12 @@
 
 function capitalize(str) {
     const arr = [];
-    let i = 0
-    while (i < str.length) {
+    for (let i = 0; i < str.length; i++) {
         if (i === 0 || str[i - 1] === " ") {
             arr.push(str[i].toUpperCase())
         } else {
             arr.push(str[i])
         }
-        i += 1;
     }
     return arr.join("")
 
