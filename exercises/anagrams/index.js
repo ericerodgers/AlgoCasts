@@ -9,9 +9,7 @@
 //   anagrams('Hi there', 'Bye there') --> False
 
 function anagrams(stringA, stringB) {
-    const cleanA = cleanStr(stringA)
-    const cleanB = cleanStr(stringB)
-    return cleanA === cleanB;
+    return cleanStr(stringA) === cleanStr(stringB)
 
 
     // const cleanA = stringA.replace(/[\s\p{P}]/gu, '').toLowerCase();
