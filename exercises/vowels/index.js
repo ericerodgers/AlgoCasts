@@ -9,16 +9,16 @@
 
 function vowels(str) {
     // USING REGEX:
-    const cleanStr = str.toLowerCase();
-    const vowelsArr = cleanStr.match(/[aeiou]/gi)
+    const vowelsArr = str.match(/[aeiou]/gi)
     return vowelsArr ? vowelsArr.length : 0;
 
     // ITERATIVE:
     // const cleanStr = str.toLowerCase();
-    // const vowels = {"a": true, "e": true, "i": true, "o": true, "u": true}
+    // const vowelsObj = {"a": true, "e": true, "i": true, "o": true, "u": true}
+    // // OR const allVowels = "aeiou" OR const allVowels = ["a", "e", "i", "o", "u"]
     // let numVowels = 0
     // for (const char of cleanStr) {
-    //     if (vowels[char]) {
+    //     if (vowelsObj[char]) { // OR if (allVowels.includes(char)) {
     //         numVowels += 1
     //     }
     // }
