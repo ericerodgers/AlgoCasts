@@ -22,4 +22,16 @@ class Queue {
   }
 }
 
+const weave = (queueOne, queueTwo) => {
+  const woven = new Queue
+  while (queueOne.peek() || queueTwo.peek()) {
+    if (queueOne.peek()) {
+      woven.add(queueOne.remove())
+    } else if (queueTwo.peek()) {
+      woven.add(queueTwo.remove())
+    }
+  }
+  return woven
+}
+
 module.exports = Queue;
