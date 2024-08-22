@@ -28,11 +28,11 @@ class Queue {
         while (this.stackOne.peek()) {
             this.stackTwo.push(this.stackOne.pop())
         }
-        this.el = this.stackTwo.pop()
+        const el = this.stackTwo.pop()
         while (this.stackTwo.peek()) {
             this.stackOne.push(this.stackTwo.pop())
         }
-        return this.el
+        return el
     }
 
     peek() {
