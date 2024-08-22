@@ -8,6 +8,58 @@
 // Example:
 //   fib(4) === 3
 
-function fib(n) {}
+function fib(n) {
+    // recursive solution is EXPONENTIAL runtime... iterative solution is better!
+    if (n < 2) return n
+    return fib(n-1) + fib(n-2)
+
+    // iterative example has linear runtime O(n):
+    // const result = [0, 1]
+    // while (result.length <= n) {
+    //     result.push(result[result.length - 1] + result[result.length - 2])
+    // }
+    // return result[n]
+}
 
 module.exports = fib;
+
+// ONE-LINE memoized fib!!!
+// const fib = (n) => (n < 2 ? n : (cache[n] ||= fib(n - 1) + fib(n - 2)))
+
+// which is a reduction of regular memoized fib:
+// const cache = {}
+// const fib = (n) => {
+//   if (n < 2) return n
+//   cache[n] = cache[n] || fib(n - 1) + fib(n - 2)
+//   return cache[n]
+// }
+
+//Memoized fib written even more declaratively
+const memo = {}
+const memoFib = (n) => {
+    if (n<2) return n;
+    if (memo[n]) {
+        return memo[n]
+    } else {
+        memo[n] = fib(n)
+        return memo[n];
+    }
+}
+
+// OR YOU CAN CREATE AN AMAZING GENERIC MEMOIZE FUNC AND USE THAT!!!!!
+const memoizeFunc = fn => {
+    const cache = {}
+
+    const func = (...args) => {
+        if (cache[args]) {
+            return cache[args]
+        } else {
+            cache[args] = fn.apply(this, args)
+            return cache[args]
+        }
+    }
+
+    return func;
+}
+
+const fastFib = memoizeFunc(fib)
