@@ -47,19 +47,25 @@ const memoFib = (n) => {
 }
 
 // OR YOU CAN CREATE AN AMAZING GENERIC MEMOIZE FUNC AND USE THAT!!!!!
-const memoizeFunc = fn => {
-    const cache = {}
+// const memoizeFunc = fn => {
+//     const cache = {}
 
-    const func = (...args) => {
-        if (cache[args]) {
-            return cache[args]
-        } else {
-            cache[args] = fn.apply(this, args)
-            return cache[args]
-        }
-    }
+//     const func = (...args) => {
+//         if (cache[args]) {
+//             return cache[args]
+//         } else {
+//             cache[args] = fn.apply(this, args)
+//             return cache[args]
+//         }
+//     }
 
-    return func;
-}
+//     return func;
+// }
 
-const fastFib = memoizeFunc(fib)
+// const fib = n => {
+//     if (n < 2) return n;
+//     return fastFib(n - 1) + fastFib(n - 2)
+// }
+// const fastFib = memoizeFunc(fib)
+
+// module.exports = fib;
