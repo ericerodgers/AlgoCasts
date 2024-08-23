@@ -10,8 +10,48 @@
 // on the tree class.  Each method should accept a
 // function that gets called with each element in the tree
 
-class Node {}
+class Node {
+    constructor(data) {
+        this.data = data;
+        this.children = []
+    }
 
-class Tree {}
+    add(data) {
+        this.children.push(new Node(data))
+    }
+
+    remove(data) {
+        // instead of finding and removing the node with the data, we use the filter method to find and return all nodes that do NOT have the data, and reassign the children array
+        this.children = this.children.filter(node => {
+            return node.data !== data
+        }) 
+    }
+}
+
+class Tree {
+    constructor() {
+        this.root = null
+    }
+
+    traverseBF(fn) {
+        const queue = [this.root];
+        while (queue.length) {
+            const node = queue.shift()
+            queue.push(...node.children)
+            fn(node)
+        }
+    }
+
+    traverseDF(fn) {
+        // i don't like this answer because shift and unshift methods are slow because of array re-indexing
+        // this should be done using recursion...
+        const arr = [this.root];
+        while (arr.length) {
+            const node = arr.shift()
+            arr.unshift(...node.children)
+            fn(node)
+        }
+    }
+}
 
 module.exports = { Tree, Node };
